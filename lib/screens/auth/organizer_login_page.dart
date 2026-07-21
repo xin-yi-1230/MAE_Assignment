@@ -68,6 +68,8 @@ class _OrganizerLoginPageState extends State<OrganizerLoginPage> {
   }
 
   String _getAuthenticationMessage(Object error) {
+    debugPrint('ORGANIZER LOGIN ERROR: $error');
+
     if (error is AuthFailure) {
       return error.message;
     }
@@ -92,11 +94,15 @@ class _OrganizerLoginPageState extends State<OrganizerLoginPage> {
           return 'Please check your internet connection.';
 
         default:
-          return error.message ?? 'Organizer login failed.';
+          return '${error.code}: ${error.message ?? "Authentication failed."}';
       }
     }
 
-    return 'Organizer login failed. Please try again.';
+    if (error is FirebaseException) {
+      return '${error.code}: ${error.message ?? "Firebase operation failed."}';
+    }
+
+    return error.toString();
   }
 
   @override
