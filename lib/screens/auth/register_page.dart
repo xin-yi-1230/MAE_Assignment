@@ -58,13 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(
-            content: Text(
-              _getRegistrationMessage(error),
-            ),
-          ),
-        );
+        ..showSnackBar(SnackBar(content: Text(_getRegistrationMessage(error))));
     } finally {
       if (mounted) {
         setState(() => _isLoading = false);
@@ -73,6 +67,8 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String _getRegistrationMessage(Object error) {
+    print('Registration Error Type: ${error.runtimeType}');
+    print('Registration Error Details: $error');
     if (error is AuthFailure) {
       return error.message;
     }
@@ -105,27 +101,21 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Create Account'),
-      ),
+      appBar: AppBar(title: const Text('Create Account')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 480,
-              ),
+              constraints: const BoxConstraints(maxWidth: 480),
               child: Form(
                 key: _formKey,
                 child: Column(
                   children: [
                     Text(
                       'Register for APEvent',
-                      style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                      style: Theme.of(context).textTheme.headlineSmall
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 24),
                     TextFormField(
@@ -255,8 +245,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _hideConfirmPassword =
-                                  !_hideConfirmPassword;
+                              _hideConfirmPassword = !_hideConfirmPassword;
                             });
                           },
                           icon: Icon(
@@ -284,9 +273,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: FilledButton(
                         onPressed: _isLoading ? null : _register,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 14,
-                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 14),
                           child: _isLoading
                               ? const SizedBox(
                                   width: 22,

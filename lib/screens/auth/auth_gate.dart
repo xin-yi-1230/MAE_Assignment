@@ -2,6 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_assignment/screens/auth/login_page.dart';
+import 'package:flutter_application_assignment/screens/main_screen.dart';
+import 'package:flutter_application_assignment/viewmodels/booth_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/cart_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/dashboard_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/event_detail_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/event_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/notice_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/order_viewmodel.dart';
+import 'package:flutter_application_assignment/viewmodels/review_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 import '../home/role_home_page.dart';
 
@@ -13,8 +23,7 @@ class AuthGate extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, authenticationSnapshot) {
-        if (authenticationSnapshot.connectionState ==
-            ConnectionState.waiting) {
+        if (authenticationSnapshot.connectionState == ConnectionState.waiting) {
           return const _LoadingPage();
         }
 
@@ -31,10 +40,7 @@ class AuthGate extends StatelessWidget {
 }
 
 class RoleRouter extends StatelessWidget {
-  const RoleRouter({
-    required this.user,
-    super.key,
-  });
+  const RoleRouter({required this.user, super.key});
 
   final User user;
 
@@ -101,11 +107,22 @@ class RoleRouter extends StatelessWidget {
             );
 
           case 'visitor':
-            return RoleHomePage(
-              title: 'Visitor Dashboard',
-              accountName: name,
-              role: 'Visitor',
-              icon: Icons.person,
+            // ── Wrap MainScreen with all providers ──
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider(create: (_) => DashboardViewModel()),
+                ChangeNotifierProvider(create: (_) => EventViewModel()),
+                ChangeNotifierProvider(create: (_) => EventDetailViewModel()),
+                ChangeNotifierProvider(create: (_) => BoothViewModel()),
+                ChangeNotifierProvider(create: (_) => CartViewModel()),
+                ChangeNotifierProvider(create: (_) => OrderViewModel()),
+                ChangeNotifierProvider(create: (_) => ReviewViewModel()),
+                ChangeNotifierProvider(create: (_) => NoticeViewModel()),
+              ],
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: const MainScreen(),
+              ),
             );
 
           default:
@@ -119,10 +136,7 @@ class RoleRouter extends StatelessWidget {
 }
 
 class AccountProblemPage extends StatelessWidget {
-  const AccountProblemPage({
-    required this.message,
-    super.key,
-  });
+  const AccountProblemPage({required this.message, super.key});
 
   final String message;
 
@@ -136,10 +150,7 @@ class AccountProblemPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.error_outline,
-                  size: 64,
-                ),
+                const Icon(Icons.error_outline, size: 64),
                 const SizedBox(height: 16),
                 Text(
                   message,
@@ -167,10 +178,6 @@ class _LoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

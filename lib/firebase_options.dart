@@ -41,52 +41,46 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBEmA-5xXFUnU5wh0qyIDS8lSEWj8mOeSc',
-    appId: '1:169016571396:web:6ac37b5c3136f7b1f9a751',
-    messagingSenderId: '169016571396',
-    projectId: 'fddassignment-c9283',
-    authDomain: 'fddassignment-c9283.firebaseapp.com',
-    databaseURL: 'https://fddassignment-c9283-default-rtdb.firebaseio.com',
-    storageBucket: 'fddassignment-c9283.firebasestorage.app',
+    apiKey: 'AIzaSyCWG4BwLQp8LF4vawBZ1IQ7RP8WNnLtRdM',
+    appId: '1:161439195735:web:871f6e0996db3195813912',
+    messagingSenderId: '161439195735',
+    projectId: 'apevent-group9',
+    authDomain: 'apevent-group9.firebaseapp.com',
+    storageBucket: 'apevent-group9.firebasestorage.app',
+    measurementId: 'G-3SV1ZK5MS4',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDiMBaj6gHf1sey6GvL_TR-hQiPUlPlw8A',
-    appId: '1:169016571396:android:1bb4692d8d224288f9a751',
-    messagingSenderId: '169016571396',
-    projectId: 'fddassignment-c9283',
-    databaseURL: 'https://fddassignment-c9283-default-rtdb.firebaseio.com',
-    storageBucket: 'fddassignment-c9283.firebasestorage.app',
+    apiKey: 'AIzaSyB62RGhFn8LaohNtCptsA2mFHR1CSRnjJI',
+    appId: '1:161439195735:android:771495dccb7f4f51813912',
+    messagingSenderId: '161439195735',
+    projectId: 'apevent-group9',
+    storageBucket: 'apevent-group9.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD350ksDS5B2sVRBpvvUfRSvCx9kK1Vmm8',
-    appId: '1:169016571396:ios:acd0192a08c6a7fff9a751',
-    messagingSenderId: '169016571396',
-    projectId: 'fddassignment-c9283',
-    databaseURL: 'https://fddassignment-c9283-default-rtdb.firebaseio.com',
-    storageBucket: 'fddassignment-c9283.firebasestorage.app',
+    apiKey: 'AIzaSyCb-rzbaeVLnp8If5kDb_mS-ofD4UvUEew',
+    appId: '1:161439195735:ios:800608e5954993f3813912',
+    messagingSenderId: '161439195735',
+    projectId: 'apevent-group9',
+    storageBucket: 'apevent-group9.firebasestorage.app',
     iosBundleId: 'com.example.flutterApplicationAssignment',
   );
-
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD350ksDS5B2sVRBpvvUfRSvCx9kK1Vmm8',
-    appId: '1:169016571396:ios:acd0192a08c6a7fff9a751',
-    messagingSenderId: '169016571396',
-    projectId: 'fddassignment-c9283',
-    databaseURL: 'https://fddassignment-c9283-default-rtdb.firebaseio.com',
-    storageBucket: 'fddassignment-c9283.firebasestorage.app',
+    apiKey: 'AIzaSyCb-rzbaeVLnp8If5kDb_mS-ofD4UvUEew',
+    appId: '1:161439195735:ios:800608e5954993f3813912',
+    messagingSenderId: '161439195735',
+    projectId: 'apevent-group9',
+    storageBucket: 'apevent-group9.firebasestorage.app',
     iosBundleId: 'com.example.flutterApplicationAssignment',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBEmA-5xXFUnU5wh0qyIDS8lSEWj8mOeSc',
-    appId: '1:169016571396:web:b6efc9c21e7e7b4ff9a751',
-    messagingSenderId: '169016571396',
-    projectId: 'fddassignment-c9283',
-    authDomain: 'fddassignment-c9283.firebaseapp.com',
-    databaseURL: 'https://fddassignment-c9283-default-rtdb.firebaseio.com',
-    storageBucket: 'fddassignment-c9283.firebasestorage.app',
+    apiKey: 'AIzaSyCWG4BwLQp8LF4vawBZ1IQ7RP8WNnLtRdM',
+    appId: '1:161439195735:web:eaf5f47ad467e417813912',
+    messagingSenderId: '161439195735',
+    projectId: 'apevent-group9',
+    authDomain: 'apevent-group9.firebaseapp.com',
+    storageBucket: 'apevent-group9.firebasestorage.app',
+    measurementId: 'G-X7QSEKZG5X',
   );
-
 }

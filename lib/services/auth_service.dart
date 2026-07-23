@@ -11,11 +11,9 @@ class AuthFailure implements Exception {
 }
 
 class AuthService {
-  AuthService({
-    FirebaseAuth? firebaseAuth,
-    FirebaseFirestore? firestore,
-  })  : _auth = firebaseAuth ?? FirebaseAuth.instance,
-        _firestore = firestore ?? FirebaseFirestore.instance;
+  AuthService({FirebaseAuth? firebaseAuth, FirebaseFirestore? firestore})
+    : _auth = firebaseAuth ?? FirebaseAuth.instance,
+      _firestore = firestore ?? FirebaseFirestore.instance;
 
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
@@ -23,6 +21,9 @@ class AuthService {
   Stream<User?> get authenticationChanges => _auth.authStateChanges();
 
   User? get currentUser => _auth.currentUser;
+
+  //Temp function will change later
+  String? get currentUserId => _auth.currentUser?.uid;
 
   /// Public registration is only available to visitors and booth owners.
   ///
@@ -34,10 +35,7 @@ class AuthService {
     required String password,
     required String role,
   }) async {
-    const allowedPublicRoles = {
-      'visitor',
-      'boothOwner',
-    };
+    const allowedPublicRoles = {'visitor', 'boothOwner'};
 
     if (!allowedPublicRoles.contains(role)) {
       throw const AuthFailure(
@@ -119,16 +117,10 @@ class AuthService {
       }
 
       if (role == 'organizer') {
-        throw const AuthFailure(
-          'Organizer accounts must use Organizer Login.',
-        );
+        throw const AuthFailure('Organizer accounts must use Organizer Login.');
       }
 
-      const normalRoles = {
-        'visitor',
-        'boothOwner',
-        'operationStaff',
-      };
+      const normalRoles = {'visitor', 'boothOwner', 'operationStaff'};
 
       if (!normalRoles.contains(role)) {
         throw const AuthFailure(
@@ -166,9 +158,7 @@ class AuthService {
       final isActive = profile['isActive'] as bool? ?? true;
 
       if (!isActive) {
-        throw const AuthFailure(
-          'This organizer account has been disabled.',
-        );
+        throw const AuthFailure('This organizer account has been disabled.');
       }
 
       if (role != 'organizer') {
@@ -187,9 +177,7 @@ class AuthService {
     final data = document.data();
 
     if (!document.exists || data == null) {
-      throw const AuthFailure(
-        'No user profile was found for this account.',
-      );
+      throw const AuthFailure('No user profile was found for this account.');
     }
 
     return data;
@@ -200,9 +188,7 @@ class AuthService {
       throw const AuthFailure('Enter your email address first.');
     }
 
-    await _auth.sendPasswordResetEmail(
-      email: email.trim(),
-    );
+    await _auth.sendPasswordResetEmail(email: email.trim());
   }
 
   Future<void> signOut() async {

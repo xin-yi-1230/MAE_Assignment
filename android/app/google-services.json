@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "169016571396",
-    "firebase_url": "https://fddassignment-c9283-default-rtdb.firebaseio.com",
-    "project_id": "fddassignment-c9283",
-    "storage_bucket": "fddassignment-c9283.firebasestorage.app"
+    "project_number": "161439195735",
+    "project_id": "apevent-group9",
+    "storage_bucket": "apevent-group9.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:169016571396:android:1bb4692d8d224288f9a751",
+        "mobilesdk_app_id": "1:161439195735:android:771495dccb7f4f51813912",
         "android_client_info": {
           "package_name": "com.example.flutter_application_assignment"
         }
@@ -16,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDiMBaj6gHf1sey6GvL_TR-hQiPUlPlw8A"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:169016571396:android:4f057bf1efc4ec6ff9a751",
-        "android_client_info": {
-          "package_name": "com.example.flutter_application_firebase"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDiMBaj6gHf1sey6GvL_TR-hQiPUlPlw8A"
+          "current_key": "AIzaSyB62RGhFn8LaohNtCptsA2mFHR1CSRnjJI"
         }
       ],
       "services": {
